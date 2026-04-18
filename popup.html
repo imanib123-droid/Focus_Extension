@@ -1,53 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div id="popupContainer">
     <div class="leaf-decal-bg"></div>
 
-    <div id="mainPage">
+    <div id="mainPage" class="page-shell">
       <header class="header">
         <div class="title">
-          <span class="leaf-icon">🌿</span>
+          <span class="leaf-icon">FP</span>
           <div>
             <h1>Focus Pro</h1>
             <p>Stay centered, grow your focus.</p>
           </div>
         </div>
-        <button id="openSettingsBtn" class="icon-btn-settings" aria-label="Settings"></button>
+        <button id="openSettingsBtn" class="icon-btn-settings" aria-label="Open settings"></button>
       </header>
 
-      <section class="focus-card">
+      <section class="focus-card hero-card">
         <div class="plant-visual-container">
           <div id="plant"></div>
+          <div class="plant-glow"></div>
         </div>
         <div class="timer-panel">
           <div id="timer" class="timer-display">25:00</div>
-          <div class="score-display">Score <span id="score">100</span>%</div>
+          <div class="score-display">Focus score <span id="score">100</span>%</div>
           <div id="sessionStatus" class="session-status">Ready to focus</div>
         </div>
       </section>
 
-      <section class="controls">
-        <label class="input-block">
-          <span>Session timer (minutes)</span>
-          <input type="number" id="timeInput" value="25" min="1" max="60" />
-        </label>
-        <button id="startBtn" class="primary-btn">Start Session</button>
-        <button id="stopBtn" class="secondary-btn hidden">Stop Session</button>
-        <label class="checkbox-row">
-          <input type="checkbox" id="readingMode" />
-          Reading Mode
-        </label>
+      <section class="controls-card">
+        <div class="section-heading">
+          <h2>Session Setup</h2>
+          <p>The in-page hotbar stays docked and can collapse while you work.</p>
+        </div>
+
+        <div class="controls">
+          <label class="input-block">
+            <span>Session timer (minutes)</span>
+            <input type="number" id="timeInput" value="25" min="1" max="60" />
+          </label>
+
+          <div class="button-stack">
+            <button id="startBtn" class="primary-btn">Start Session</button>
+            <button id="stopBtn" class="secondary-btn hidden">Stop Session</button>
+          </div>
+
+          <label class="checkbox-row">
+            <input type="checkbox" id="readingMode" />
+            <span>Reading Mode</span>
+          </label>
+        </div>
       </section>
     </div>
 
-    <div id="settingsPage" class="settings-page hidden">
+    <div id="settingsPage" class="page-shell settings-page hidden">
       <header class="header settings-header">
-        <button id="backBtn" class="back-btn">←</button>
+        <button id="backBtn" class="back-btn" aria-label="Back">&larr;</button>
         <div>
           <h2>Settings</h2>
           <p>Customize your focus experience</p>
@@ -59,15 +72,16 @@
           <div class="settings-column">
             <h3>Blocked sites</h3>
             <div class="input-row">
-              <input id="siteInput" type="text" placeholder="Add blocked site" />
+              <input id="siteInput" type="text" placeholder="e.g. youtube.com or begin typing..." />
               <button id="addSiteBtn" class="icon-btn small">Add</button>
             </div>
             <ul id="siteList" class="site-list"></ul>
           </div>
+
           <div class="settings-column">
             <h3>Workspace sites</h3>
             <div class="input-row">
-              <input id="workspaceInput" type="text" placeholder="Add workspace safe site" />
+              <input id="workspaceInput" type="text" placeholder="e.g. google.com or begin typing..." />
               <button id="addWorkspaceBtn" class="icon-btn small">Add</button>
             </div>
             <ul id="workspaceList" class="site-list"></ul>
@@ -75,8 +89,22 @@
         </div>
 
         <div class="section-group">
+          <div class="mode-card">
+            <div class="mode-card-copy">
+              <h3>Relaxed Focus</h3>
+              <p>Steady focus with a calmer pace, supportive reminders, and a more forgiving score bar.</p>
+            </div>
+          </div>
+
+          <div class="mode-card deep-mode-card">
+            <div class="mode-card-copy">
+              <h3>Deep Focus</h3>
+              <p>Higher-pressure focus with faster score drain and stronger interventions to keep commitments visible.</p>
+            </div>
+          </div>
+
           <label class="toggle-row">
-            <span>Eye Tracker</span>
+            <span>Eye tracker</span>
             <input type="checkbox" id="eyeTrackerToggle" />
           </label>
 
@@ -87,6 +115,32 @@
               <option value="deep">Deep Focus</option>
             </select>
           </label>
+
+          <label class="toggle-row">
+            <span>Deep focus tone</span>
+            <select id="messageToneSelect">
+              <option value="encouraging">Encouraging</option>
+              <option value="aggressive">Aggressive</option>
+            </select>
+          </label>
+
+          <div class="message-editor">
+            <h3>Relaxed prompts</h3>
+            <p>Use one message per line.</p>
+            <textarea id="relaxedMessagesInput" rows="4" placeholder="Keep going&#10;Come back to your task&#10;One calm reset helps"></textarea>
+          </div>
+
+          <div class="message-editor">
+            <h3>Deep focus encouraging prompts</h3>
+            <p>Shown in deep mode when the tone is encouraging.</p>
+            <textarea id="deepEncouragingMessagesInput" rows="4" placeholder="Stay with the commitment&#10;You can recover this session&#10;One focused minute matters"></textarea>
+          </div>
+
+          <div class="message-editor">
+            <h3>Deep focus aggressive prompts</h3>
+            <p>Shown in deep mode when the tone is aggressive.</p>
+            <textarea id="deepAggressiveMessagesInput" rows="4" placeholder="Lock in now&#10;Stop drifting&#10;Finish what you started"></textarea>
+          </div>
         </div>
       </section>
     </div>
