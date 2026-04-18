@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="popupContainer">
+    <div class="leaf-decal-bg"></div>
+
+    <div id="mainPage">
+      <header class="header">
+        <div class="title">
+          <span class="leaf-icon">🌿</span>
+          <div>
+            <h1>Focus Pro</h1>
+            <p>Stay centered, grow your focus.</p>
+          </div>
+        </div>
+        <button id="openSettingsBtn" class="icon-btn-settings" aria-label="Settings"></button>
+      </header>
+
+      <section class="focus-card">
+        <div class="plant-visual-container">
+          <div id="plant"></div>
+        </div>
+        <div class="timer-panel">
+          <div id="timer" class="timer-display">25:00</div>
+          <div class="score-display">Score <span id="score">100</span>%</div>
+          <div id="sessionStatus" class="session-status">Ready to focus</div>
+        </div>
+      </section>
+
+      <section class="controls">
+        <label class="input-block">
+          <span>Session timer (minutes)</span>
+          <input type="number" id="timeInput" value="25" min="1" max="60" />
+        </label>
+        <button id="startBtn" class="primary-btn">Start Session</button>
+        <button id="stopBtn" class="secondary-btn hidden">Stop Session</button>
+        <label class="checkbox-row">
+          <input type="checkbox" id="readingMode" />
+          Reading Mode
+        </label>
+      </section>
+    </div>
+
+    <div id="settingsPage" class="settings-page hidden">
+      <header class="header settings-header">
+        <button id="backBtn" class="back-btn">←</button>
+        <div>
+          <h2>Settings</h2>
+          <p>Customize your focus experience</p>
+        </div>
+      </header>
+
+      <section class="settings-card">
+        <div class="settings-grid">
+          <div class="settings-column">
+            <h3>Blocked sites</h3>
+            <div class="input-row">
+              <input id="siteInput" type="text" placeholder="Add blocked site" />
+              <button id="addSiteBtn" class="icon-btn small">Add</button>
+            </div>
+            <ul id="siteList" class="site-list"></ul>
+          </div>
+          <div class="settings-column">
+            <h3>Workspace sites</h3>
+            <div class="input-row">
+              <input id="workspaceInput" type="text" placeholder="Add workspace safe site" />
+              <button id="addWorkspaceBtn" class="icon-btn small">Add</button>
+            </div>
+            <ul id="workspaceList" class="site-list"></ul>
+          </div>
+        </div>
+
+        <div class="section-group">
+          <label class="toggle-row">
+            <span>Eye Tracker</span>
+            <input type="checkbox" id="eyeTrackerToggle" />
+          </label>
+
+          <label class="toggle-row">
+            <span>Mode</span>
+            <select id="modeSelect">
+              <option value="relaxed">Relaxed</option>
+              <option value="deep">Deep Focus</option>
+            </select>
+          </label>
+        </div>
+      </section>
+    </div>
+
+    <div id="calibrationOverlay" class="calibration-overlay hidden">
+      <div class="calibration-screen">
+        <h2>Eye Tracker Calibration</h2>
+        <p>Allow camera access and follow the dot.</p>
+        <div class="calibration-dot"></div>
+        <button id="calibrateBtn" class="primary-btn">Calibrate</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
